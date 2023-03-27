@@ -16,6 +16,13 @@ Whether you are preparing for a technical interview or simply want to improve yo
 * [Common Data Structures](#common-data-structures)
 
 ## TL;DR:
+A very useful complexity chart by: 
+
+[bigocheatsheet.com](https://www.bigocheatsheet.com/)
+<p>
+   <img  height=300 width=500 src="https://user-images.githubusercontent.com/59776018/228047115-a23f0f1a-8d32-4225-bbba-a9ee5b00bb7e.png"/>
+</p>
+
 | Complexity       | Description                                             | Example                                |
 |------------------|---------------------------------------------------------|----------------------------------------|
 | **Constant Time**    | `O(1)` - Constant, regardless of input size              | Accessing an array element by index    |
