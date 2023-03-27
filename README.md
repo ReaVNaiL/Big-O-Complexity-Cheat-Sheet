@@ -15,6 +15,20 @@ Whether you are preparing for a technical interview or simply want to improve yo
 * [Space Complexity](#space-complexity)
 * [Common Data Structures](#common-data-structures)
 
+## TL;DR:
+| Complexity       | Description                                             | Example                                |
+|------------------|---------------------------------------------------------|----------------------------------------|
+| **Constant Time**    | `O(1)` - Constant, regardless of input size              | Accessing an array element by index    |
+| **Logarithmic Time** | `O(log n)` - Increases logarithmically with input size   | Binary search                          |
+| **Linear Time**      | `O(n)` - Increases linearly with input size               | Iterating through an array (no loops)  |
+| **Linearithmic Time**| `O(n log n)` - Linearly with input size * logarithmic factor | Merge sort                          |
+| **Quadratic Time**   | `O(n²)` - Increases quadratically with input size         | Nested loops (2 loops)                 |
+| **Cubic Time**       | `O(n³)` - Increases cubically with input size             | Triple nested loops (3 loops)          |
+| **Exponential Time** | `O(2^n)` - Increases exponentially with input size        | Naive recursive Fibonacci              |
+| **Factorial Time**   | `O(n!)` - Increases factorially with input size           | Generating all possible permutations   |
+
+
+
 ## Time Complexity:
 
 * ### O(1): Constant time.
