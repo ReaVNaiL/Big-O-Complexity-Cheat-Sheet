@@ -8,13 +8,31 @@ In this repository, you will find a comprehensive list of common algorithms and 
 
 Whether you are preparing for a technical interview or simply want to improve your knowledge of algorithmic complexities, this cheat sheet is the perfect starting point for your journey.
 
+---
 ## Table of Contents:
 [Big O Notation:](#introduction)
 * [TLDR](#tldr)
 * [Time Complexity](#time-complexity)
+    * [O(1): Constant time.](#o1-constant-time)
+    * [O(log n): Logarithmic time.](#olog-n-logarithmic-time)
+    * [O(n): Linear time.](#on-linear-time)
+    * [O(n log n): Log-linear time.](#on-log-n-log-linear-time)
+    * [O(n^2): Quadratic time.](#on2-quadratic-time)
+    * [O(n^3): Cubic time.](#on3-cubic-time)
+    * [O(2^n): Exponential time.](#o2n-exponential-time)
+    * [O(n!): Factorial time.](#on-factorial-time)
 * [Space Complexity](#space-complexity)
+    * [O(1): Constant space.](#o1-constant-space)
+    * [O(n): Linear space.](#on-linear-space)
+    * [O(n^2): Quadratic space.](#on2-quadratic-space)
 * [Common Data Structures](#common-data-structures)
+    * [Arrays](#arrays)
+    * [Linked Lists](#linked-lists)
+    * [Stacks](#stacks)
+    * [Queues](#queues)
+    * [Hash Tables](#hash-tables)
 
+---
 ## TL;DR:
 A very useful complexity chart by: 
 
@@ -35,55 +53,161 @@ A very useful complexity chart by:
 | **Factorial Time**   | `O(n!)` - Increases factorially with input size           | Generating all possible permutations   |
 
 
+---
 
 ## Time Complexity:
 
 * ### O(1): Constant time.
     * No matter how large the input, the algorithm will always take the same amount of time to complete.
-    * Example: Accessing an element in an array by index.
+    * Example: Accessing an element in an array by index. 
+```py
+def get_first(my_list):
+    return my_list[0]
+```
 
 * ### O(log n): Logarithmic time.
     * The input size has a logarithmic effect on the running time of the algorithm.
     * Example: Binary search.
+```py
+# Binary search
+```
 
 * ### O(n): Linear time.
     * The input size has a linear effect on the running time of the algorithm.
     * Example: Iterating through an array.
 
+```py
+# Iterating through an array
+def print_all_elements(my_list):
+    for element in my_list:
+        print(element)
+```
+
 * ### O(n log n): Log-linear time.
     * The input size has a log-linear effect on the running time of the algorithm.
     * Example: Merge sort.
 
+```py
+# Merge sort
+```
+
+
 * ### O(n^2): Quadratic time.
     * The input size has a quadratic effect on the running time of the algorithm.
-    * Example: Bubble sort.
+    * Example: 2 nested for loops.
+
+```py
+# 2 nested for loops
+def print_all_possible_ordered_pairs(my_list):
+    for first_item in my_list: # O(n)
+        for second_item in my_list: # O(n)
+            print(first_item, second_item)
+```
 
 * ### O(n^3): Cubic time.
     * The input size has a cubic effect on the running time of the algorithm.
     * Example: Iterating through a 3D array, or 3 nested for loops.
 
+```py
+# 3 nested for loops -- Also use as last resort for 3D arrays
+def naive_matrix_mult(A, B):
+    rows_A, cols_A = len(A), len(A[0])
+    rows_B, cols_B = len(B), len(B[0])
+    if cols_A != rows_B:
+        raise ValueError("Matrices cannot be multiplied.")
+    
+    C = [[0 for _ in range(cols_B)] for _ in range(rows_A)]
+    for i in range(rows_A):
+        for j in range(cols_B):
+            for k in range(cols_A):
+                C[i][j] += A[i][k] * B[k][j]
+```
+
 * ### O(2^n): Exponential time.
     * The input size has an exponential effect on the running time of the algorithm.
     * Example: Iterating through all subsets of a set.
 
+```py
+# Iterating through all subsets of a set
+def print_all_subsets(my_set):
+    all_subsets = [[]]
+    for element in my_set:
+        for subset in all_subsets:
+            all_subsets = all_subsets + [list(subset) + [element]]
+    return all_subsets
+
+# or
+
+def naive_fibonacci(n):
+    if n <= 1:
+        return n
+    return naive_fibonacci(n - 1) + naive_fibonacci(n - 2)
+```
+
 * ### O(n!): Factorial time.
     * The input size has a factorial effect on the running time of the algorithm.
     * Example: Iterating through all permutations of a set.
+
+```py
+# Iterating through all permutations of a set
+def generate_permutations(arr, start=0):
+    if start == len(arr) - 1:
+        print(arr)
+    for i in range(start, len(arr)):
+        arr[start], arr[i] = arr[i], arr[start]
+        # Recurse
+        generate_permutations(arr, start + 1)
+        arr[start], arr[i] = arr[i], arr[start]
+```
 
 ## Space Complexity:
 
 * ### O(1): Constant space.
     * The algorithm uses a `constant` amount of memory, regardless of the `input size`.
     * Example: `Iterating` through an `array`.
+```py
+def print_all_elements(my_list):
+    for element in my_list:
+        print(element)
+```
 
 * ### O(n): Linear space.
     * The algorithm uses `linear` amount of memory, proportional to the `input size`.
     * Example: `Iterating` through an `array` and storing the values in a `hash table`.
+```py
+# O(n) space - Storing all elements in a hash table
+def reverse_list(arr):
+    reversed_arr = []
+    for i in range(len(arr) - 1, -1, -1):
+        reversed_arr.append(arr[i])
+    return reversed_arr
+```
+
 
 * ### O(n^2): Quadratic space.  
     * The algorithm uses `quadratic` amount of memory, proportional to the `input size`.
     * Example: `Iterating` through an `array` and storing the values in a `2D array`.
+```py
+# O(n^2) space - Storing all elements in a 2D array
+def create_identity_matrix(n):
+    identity = [[0 for _ in range(n)] for _ in range(n)]
+    for i in range(n):
+        identity[i][i] = 1
+    return identity
+```
 
+* ### O(2^n): Exponential space.
+    * The algorithm uses `exponential` amount of memory, proportional to the `input size`.
+    * Example: `Iterating` through all subsets of a set.
+```py
+# Exponential Space - O(2^n)
+def power_set(arr):
+    result = [[]]
+    for item in arr:
+        result += [subset + [item] for subset in result]
+    return result
+```
+---
 ## Common Data Structures:
 
 * ### Array
